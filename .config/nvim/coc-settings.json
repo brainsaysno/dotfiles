@@ -1,0 +1,19 @@
+{
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "haskell",
+    "python",
+    "typescript",
+    "typescriptreact",
+    "javascript",
+    "javascriptreact",
+    "json"
+  ],
+  "diagnostic.errorSign": "✘",
+  "diagnostic.infoSign": "ℹ",
+  "diagnostic.hintSign": "➤",
+  "diagnostic.enableHighlightLineNumber": true,
+  "codeLens.enable": true,
+  "highlight.colors.enable": true
+}

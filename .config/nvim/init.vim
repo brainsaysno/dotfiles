@@ -90,10 +90,12 @@ call plug#begin()
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
   Plug 'nvim-telescope/telescope-file-browser.nvim'
+  Plug 'fannheyward/telescope-coc.nvim'
   
   Plug 'terrortylor/nvim-comment'
   Plug 'pantharshit00/vim-prisma'
 
+  Plug 'tpope/vim-fugitive'
 call plug#end()
 
 colorscheme gruvbox
@@ -110,6 +112,9 @@ vnoremap <silent> <leader>z :TZNarrow<CR>
 vnoremap ∆ :m '>+<CR>gv=gv
 vnoremap ˚ :m -2<CR>gv=gv
 
+" Go to alternate file
+nnoremap <silent> ga :e#<CR>
+
 " Telescope file browser configuration
 lua require('telescope').load_extension('file_browser')
 
@@ -120,7 +125,7 @@ nnoremap <leader>b <cmd>Telescope file_browser<cr>
 
 nnoremap <leader>t <cmd>term<cr>
 
-lua require('nvim_comment').setup()
+lua require'nvim_comment'.setup()
 
 " Feline setup
 
@@ -171,6 +176,9 @@ set signcolumn=yes
 inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -181,6 +189,10 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gp :Telescope coc workspace_symbols<CR> 
+
+nmap <silent> g. :Telescope coc line_code_actions<CR> 
+nmap <silent> gp :Telescope coc workspace_symbols<CR> 
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call ShowDocumentation()<CR>
